@@ -5,12 +5,13 @@ pipeline {
         nodejs 'nodejs'
     }
     environment  {
-        SCANNER_HOME=tool 'sonar-scanner'
-        AWS_ACCOUNT_ID = credentials('ACCOUNT_ID')
-        AWS_ECR_REPO_NAME = credentials('ECR_REPO2')
-        AWS_DEFAULT_REGION = 'us-east-1'
-        REPOSITORY_URI = "${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/"
-    }
+       environment {
+    SCANNER_HOME = tool 'sonar-scanner'
+    AWS_ACCOUNT_ID = "123456789012"
+    AWS_ECR_REPO_NAME = "backend" 
+    AWS_DEFAULT_REGION = "us-east-1"
+    REPOSITORY_URI = "123456789012.dkr.ecr.us-east-1.amazonaws.com/"
+} 
     stages {
         stage('Cleaning Workspace') {
             steps {
